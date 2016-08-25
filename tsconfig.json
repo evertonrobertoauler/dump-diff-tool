@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es6",
+        "noImplicitAny": false,
+        "removeComments": false,
+        "preserveConstEnums": true,
+        "sourceMap": false,
+        "outDir": "dist"
+    },
+    "files": [
+        "src/index.ts",
+        "src/diff.test.ts",
+        "src/read-file.test.ts",
+        "src/typings.d.ts"
+    ]
+}

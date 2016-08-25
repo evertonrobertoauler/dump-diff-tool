@@ -1,0 +1,27 @@
+{
+  "name": "dump-diff-tool",
+  "version": "1.0.0",
+  "description": "Database dump diff tool",
+  "main": "dist/index.js",
+  "scripts": {
+    "predev": "npm run tsc",
+    "dev": "concurrently \"npm run tsc:dev\" \"npm run mocha:dev\"",
+    "tsc": "tsc",
+    "tsc:dev": "tsc -w",
+    "mocha:dev": "mocha -w dist/*.test.js",
+    "postinstall": "typings install"
+  },
+  "author": "Éverton Roberto Auler <evertonrobertoauler@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "denodeify": "^1.2.1",
+    "immutable": "^3.8.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "concurrently": "^2.2.0",
+    "mocha": "^3.0.2",
+    "typescript": "^2.0.0",
+    "typings": "^1.3.2"
+  }
+}
