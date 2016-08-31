@@ -1,6 +1,7 @@
 import {join} from 'path';
 import {expect} from 'chai';
 import {readFile} from './read-file';
+import {Range} from 'immutable';
 
 describe('Read File Function', () => {
   it('read #1', async () => {
@@ -29,7 +30,7 @@ describe('Read File Function', () => {
     let result;
 
     do {
-      result = await file.next();
+      result = (await Promise.all(Range(0, 20).map(() => file.next()).toArray())).pop();
     } while (!result.done);
 
     expect(result).to.deep.equal({ value: '', done: true });
@@ -41,12 +42,9 @@ describe('Read File Function', () => {
     let result;
 
     do {
-      result = await file.next();
+      result = (await Promise.all(Range(0, 20).map(() => file.next()).toArray())).pop();
     } while (!result.done);
 
-    result = await file.next();
-    result = await file.next();
-    result = await file.next();
     result = await file.next();
 
     expect(result).to.deep.equal({ value: '', done: true });

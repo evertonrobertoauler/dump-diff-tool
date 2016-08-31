@@ -15,7 +15,8 @@
   "license": "ISC",
   "dependencies": {
     "denodeify": "^1.2.1",
-    "immutable": "^3.8.1"
+    "immutable": "^3.8.1",
+    "redux": "^3.5.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",
