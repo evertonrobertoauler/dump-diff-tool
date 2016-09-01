@@ -2,7 +2,7 @@ import * as denodeify from 'denodeify';
 import * as fs from 'fs';
 import {createStore, Store} from 'redux';
 import { defer } from './defer';
-import {Map, List} from 'immutable';
+import {Map, List, Range} from 'immutable';
 
 const BUFFER_SIZE = 4 * 1024;
 const END_OF_LINE = '\n';
@@ -24,9 +24,13 @@ export async function readFile(fileName: string, {bufferSize = BUFFER_SIZE}: IRe
 
   store.dispatch({ type: ReaderTypes.INIT_READER, payload: { store, file, size, bufferSize } });
 
-  async function next(): Promise<any> {
-    store.dispatch({ type: ReaderTypes.READ_LINE });
-    return store.getState().get('deferredList').last().promise;
+  async function next(lines = 1): Promise<any> {
+    if (lines > 1) {
+      return Promise.all(Range(0, lines).map(() => next()).toArray());
+    } else {
+      store.dispatch({ type: ReaderTypes.READ_LINE });
+      return store.getState().get('deferredList').last().promise;
+    }
   }
 
   return { next };
