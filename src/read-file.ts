@@ -126,7 +126,6 @@ const fstat = denodeify(fs.fstat);
 const initialState = {
   buffer: '',
   done: false,
-  line: 0,
   index: 0,
   deferredList: List(),
   lineList: List()
@@ -142,7 +141,6 @@ interface IState {
   file: number;
   bufferSize: number;
   size: number;
-  line: number;
   index: number;
   deferredList: List<any>;
   lineList: List<string>;

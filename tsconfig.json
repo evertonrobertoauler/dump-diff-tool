@@ -12,6 +12,7 @@
         "src/index.ts",
         "src/diff.test.ts",
         "src/read-file.test.ts",
+        "src/diff-file.test.ts",
         "src/typings.d.ts"
     ]
 }
